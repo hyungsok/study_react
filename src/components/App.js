@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './Header';
 import Content from './Content';
 import RandomNumber from './RandomNumber';
-import Contacts from './Contacts'
+import Contacts from './Contacts';
 
-class App extends React.Component {
+class App extends Component {
 
   constructor(props){
       super(props);
@@ -26,9 +26,12 @@ class App extends React.Component {
     render(){
         return  (
             <div>
-                <Header title={this.props.headerTitle}/>
+                <Header title={this.props.headerTitle} />
+                <hr/>
                 <Content title={this.props.contentTitle} body={this.props.contentBody} />
+                <hr/>
                 <RandomNumber number={this.state.value} onUpdate={this._updateValue} />
+                <hr/>
                 <Contacts/>
             </div>
         );

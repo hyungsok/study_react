@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 
-class RandomNumber extends React.Component {
+class RandomNumber extends Component {
 
     constructor(props){
         super(props);

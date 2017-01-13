@@ -5,6 +5,8 @@ webpack의 역할은, entry 부터 시작하여 필요한 모듈들을 다 불�
 개발 서버의 포트는 7777로 설정되었습니다.
 개발 서버는 파일이 변동 될 때마다 다시 컴파일하고, 연결되어있는 브라우저를 새로고침해주는 기능을 가지고 있습니다.
 */
+var webpack = require('webpack')
+
 module.exports = {
     entry: './src/index.js',
 
@@ -14,9 +16,10 @@ module.exports = {
     },
 
     devServer: {
+        hot: true, // 파일이 수정될때마다 올라감
         inline: true,
         port: 7777,
-        contentBase: __dirname + '/public/'
+        contentBase: __dirname + '/public/' // index파일의 위치
     },
 
     module: {
@@ -27,9 +30,13 @@ module.exports = {
                     exclude: /node_modules/,
                     query: {
                         cacheDirectory: true,
-                        presets: ['es2015', 'react']
+                        presets: ['es2015', 'stage-0', 'react']
                     }
                 }
             ]
-        }
+        },
+        plugins: [
+          new webpack.HotModuleReplacementPlugin()
+        ]
+
 };
